@@ -5,18 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:fontFamily="@font/lato"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/menu"
-        android:layout_width="25sp"
-        android:layout_height="25sp"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
         android:src="@drawable/menu"
         app:layout_constraintTop_toTopOf="@id/title"
         app:layout_constraintBottom_toBottomOf="@id/title"
-        app:layout_constraintEnd_toStartOf="@id/title"
-        android:layout_marginEnd="75sp"
+        app:layout_constraintStart_toStartOf="@id/nav_bar_separator"
         android:contentDescription="@string/menu_icon" />
 
     <Button
@@ -39,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="30sp"
         android:textSize="30sp"
         android:textStyle="bold"
         />
@@ -48,15 +46,12 @@
         android:id="@+id/search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginStart="65sp"
         android:commitIcon="@drawable/search"
         android:goIcon="@drawable/search"
-        android:scaleX="@android:dimen/app_icon_size"
         android:searchIcon="@drawable/search"
-        android:voiceIcon="@drawable/search"
         app:layout_constraintBottom_toBottomOf="@id/title"
-        app:layout_constraintStart_toEndOf="@id/title"
+        app:layout_constraintEnd_toEndOf="@id/nav_bar_separator"
         app:layout_constraintTop_toTopOf="@id/title" />
 
     <View
