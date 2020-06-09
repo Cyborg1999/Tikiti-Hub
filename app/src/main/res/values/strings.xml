@@ -3,4 +3,15 @@
     <string name="tikitihub">TikitiHub</string>
     <string name="now_showing">NOW SHOWING</string>
     <string name="menu_icon">menu_icon</string>
+    <string name="coming_soon">COMING SOON</string>
+    <string name="go_back"><![CDATA[< Go Back]]></string>
+    <string name="movie_title">NO TIME TO DIE</string>
+    <string name="movie_genre">Action Thriller Adventure</string>
+    <string name="movie_description">No Time to Die is a forthcoming spy film and the twenty-fifth installment in the james bond film series produced by Eon Productions. It features Daniel Craig in his fifth and final outing as the fictional MI6 agent James Bond.</string>
+    <string name="book_ticket">BOOK TICKET</string>
+    <string name="tikitihub_2020">TikitiHub © 2020</string>
+    <string name="checkout">CHECKOUT</string>
+    <string name="date">Date</string>
+    <string name="screening_type">Screening Type</string>
+    <string name="time">Time</string>
 </resources>
