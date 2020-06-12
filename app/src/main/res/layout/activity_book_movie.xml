@@ -114,10 +114,9 @@
     <TextView
         android:id="@+id/movie_description"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.5"
         android:layout_height="0dp"
         android:layout_marginTop="3sp"
-        android:layout_marginStart="15sp"
+        android:layout_marginStart="15dp"
         android:text="@string/movie_description"
         android:textColor="@color/colorAccent"
         android:textSize="12sp"
