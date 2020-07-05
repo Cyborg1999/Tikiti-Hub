@@ -14,4 +14,20 @@
     <string name="date">Date</string>
     <string name="screening_type">Screening Type</string>
     <string name="time">Time</string>
+    <string name="movie_duration">2h</string>
+    <string name="mini_movie_title">No Time To Die (2020)</string>
+
+    <string-array name="movie_titles">
+        <item>Bad Boys (2020)</item>
+        <item>Black Widow (2020)</item>
+        <item>Bloodshot (2020)</item>
+        <item>Birds of Prey (2020)</item>
+    </string-array>
+
+    <array name="movie_posters">
+        <item>@drawable/bad_boys_poster</item>
+        <item>@drawable/black_widow_poster</item>
+        <item>@drawable/bloodshot_poster</item>
+        <item>@drawable/harley_quinn_poster</item>
+    </array>
 </resources>
