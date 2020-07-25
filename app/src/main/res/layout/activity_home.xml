@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.HomeActivity"
+    android:background="@color/colorPrimary"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20sp">
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tikitihub"
+            android:textSize="24sp"
+            android:padding="18sp"
+            android:fontFamily="@font/lato"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/slider_pager"
+            android:layout_width="0dp"
+            android:layout_height="250sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_title" >
+        </androidx.viewpager.widget.ViewPager>
+
+        <com.google.android.material.tabs.TabLayout
+            app:tabGravity="center"
+            android:id="@+id/slide_indicator"
+            app:tabBackground="@drawable/indicator_selector"
+            app:tabIndicatorHeight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/slider_pager">
+        </com.google.android.material.tabs.TabLayout>
+
+        <TextView
+            android:id="@+id/now_showing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_movies_title"
+            android:textAllCaps="true"
+            android:fontFamily="@font/lato"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="15sp"
+            android:paddingHorizontal="15sp"
+            android:paddingVertical="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/slide_indicator"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/now_showing_recycler_view"
+            android:layout_width="0dp"
+            android:layout_marginStart="8sp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/now_showing"
+            android:paddingBottom="20sp"/>
+
+        <TextView
+            android:id="@+id/coming_soon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/coming_soon"
+            android:textAllCaps="true"
+            android:fontFamily="@font/lato"
+            android:textColor="@android:color/secondary_text_dark"
+            android:textSize="15sp"
+            android:paddingHorizontal="15sp"
+            android:paddingVertical="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/now_showing_recycler_view"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/coming_soon_recycler_view"
+            android:layout_width="0dp"
+            android:layout_marginStart="8sp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/coming_soon"
+            android:paddingBottom="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tikitihub_2020"
+            android:fontFamily="@font/lato"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            android:paddingHorizontal="15sp"
+            android:paddingVertical="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/coming_soon_recycler_view"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

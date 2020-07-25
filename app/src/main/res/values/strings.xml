@@ -1,13 +1,12 @@
 <resources>
     <string name="app_name">Tikiti Hub</string>
     <string name="tikitihub">TikitiHub</string>
-    <string name="now_showing">NOW SHOWING</string>
     <string name="menu_icon">menu_icon</string>
+    <string name="new_movies_title">New Popular Films and Movies</string>
     <string name="coming_soon">COMING SOON</string>
-    <string name="go_back"><![CDATA[< Go Back]]></string>
-    <string name="movie_title">NO TIME TO DIE</string>
+    <string name="movie_title">MOVIE TITLE</string>
     <string name="movie_genre">Action Thriller Adventure</string>
-    <string name="movie_description">No Time to Die is a forthcoming spy film and the twenty-fifth installment in the james bond film series produced by Eon Productions. It features Daniel Craig in his fifth and final outing as the fictional MI6 agent James Bond.</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula quam eros, id imperdiet ante posuere nec. Vestibulum gravida, sem et eleifend mattis, lorem est malesuada turpis, in volutpat sapien nisi viverra ipsum. Cras pulvinar purus ipsum, nec pellentesque augue scelerisque a. Aliquam pellentesque facilisis malesuada. Duis et ornare lectus. Proin nec hendrerit libero.</string>
     <string name="book_ticket">BOOK TICKET</string>
     <string name="tikitihub_2020">TikitiHub © 2020</string>
     <string name="checkout">CHECKOUT</string>
@@ -16,12 +15,28 @@
     <string name="time">Time</string>
     <string name="movie_duration">2h</string>
     <string name="mini_movie_title">No Time To Die (2020)</string>
+    <string name="watch_the_trailer">Watch the Trailer</string>
+    <string name="cast">Cast</string>
+    <string name="movie_info">Movie Info</string>
 
     <string-array name="movie_titles">
         <item>Bad Boys (2020)</item>
         <item>Black Widow (2020)</item>
         <item>Bloodshot (2020)</item>
         <item>Birds of Prey (2020)</item>
+        <item>No Time To Die (2020)</item>
+    </string-array>
+
+    <string-array name="movie_descriptions">
+        <item>Bad Boys for Life is a 2020 American action comedy film that is the sequel to Bad Boys II (2003) and the third installment in the Bad Boys trilogy. Will Smith and Martin Lawrence reprise their starring roles in the film, which is directed by Adil and Bilall and written by Chris Bremner, Peter Craig and Joe Carnahan. The film\'s cast also includes Paola Núñez, Vanessa Hudgens, Alexander Ludwig, Charles Melton, Kate del Castillo, Nicky Jam, and Joe Pantoliano. It was produced by Smith, Jerry Bruckheimer, and Doug Belgrad. In Bad Boys for Life, Miami detectives Mike Lowrey and Marcus Burnett investigate a string of murders tied to Lowrey\'s troubled past.</item>
+
+        <item>Black Widow is an upcoming American superhero film based on the Marvel Comics character of the same name. Produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures, it is intended to be the 24th film in the Marvel Cinematic Universe (MCU). The film was directed by Cate Shortland and written by Eric Pearson from a story by Jac Schaeffer and Ned Benson, and stars Scarlett Johansson as Natasha Romanoff / Black Widow alongside Florence Pugh, David Harbour, O-T Fagbenle, William Hurt, Ray Winstone, and Rachel Weisz. Set after Captain America: Civil War (2016), the film sees Romanoff on the run and forced to confront her past.</item>
+
+        <item>Bloodshot is a 2020 American superhero film based on the Valiant Comics character of the same name. It is intended to be the first installment in a series of films set within a Valiant Comics shared cinematic universe. Directed by David S. F. Wilson (in his feature directorial debut) from a screenplay by Jeff Wadlow and Eric Heisserer and a story by Wadlow, the film stars Vin Diesel, Eiza González, Sam Heughan, Toby Kebbell, and Guy Pearce. It follows a Marine who was killed in action, only to be brought back to life with superpowers by an organization that wants to use him as a weapon.</item>
+
+        <item>Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn) is a 2020 American superhero film based on the DC Comics team Birds of Prey. Distributed by Warner Bros. Pictures, it is the eighth installment in the DC Extended Universe and a follow-up to Suicide Squad (2016). It was directed by Cathy Yan and written by Christina Hodson, and it stars Margot Robbie, Mary Elizabeth Winstead, Jurnee Smollett-Bell, Rosie Perez, Chris Messina, Ella Jay Basco, Ali Wong, and Ewan McGregor. The film follows Harley Quinn as she joins forces with Helena Bertinelli, Dinah Lance, and Renee Montoya to save Cassandra Cain from Gotham City crime lord Roman Sionis.</item>
+
+        <item>No Time to Die is a forthcoming spy film and the twenty-fifth instalment in the James Bond film series produced by Eon Productions. It features Daniel Craig in his fifth and final outing as the fictional MI6 agent James Bond. The film is directed by Cary Joji Fukunaga from a screenplay by Neal Purvis, Robert Wade, Fukunaga and Phoebe Waller-Bridge. Léa Seydoux, Ben Whishaw, Naomie Harris, Jeffrey Wright, Christoph Waltz, Rory Kinnear and Ralph Fiennes reprise their roles from previous films, with Rami Malek, Lashana Lynch, Dali Benssalah, Billy Magnussen, David Dencik and Ana de Armas joining the cast as new characters.</item>
     </string-array>
 
     <array name="movie_posters">
@@ -29,5 +44,27 @@
         <item>@drawable/black_widow_poster</item>
         <item>@drawable/bloodshot_poster</item>
         <item>@drawable/harley_quinn_poster</item>
+        <item>@drawable/james_bond_poster</item>
     </array>
+
+    <array name="movie_background_covers">
+        <item>@drawable/bad_boys_cover</item>
+        <item>@drawable/black_widow_cover</item>
+        <item>@drawable/bloodshot_cover</item>
+        <item>@drawable/harley_quinn_cover</item>
+        <item>@drawable/james_bond_cover</item>
+    </array>
+
+    <string-array name="movie_trailers">
+        <item>https://www.youtube.com/watch?v=jKCj3XuPG8M</item>
+        <item>https://www.youtube.com/watch?v=ybji16u608U</item>
+        <item>https://www.youtube.com/watch?v=vOUVVDWdXbo</item>
+        <item>https://www.youtube.com/watch?v=kGM4uYZzfu0</item>
+        <item>https://www.youtube.com/watch?v=BIhNsAtPbPI</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="cinema">Cinema</string>
+
 </resources>
