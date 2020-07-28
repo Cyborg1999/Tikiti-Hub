@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
 public class MovieDetailViewPager extends ViewPager {

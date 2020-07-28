@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -72,8 +73,12 @@ public class HomeActivity extends AppCompatActivity implements MovieItemClickLis
         viewMovieIntent.putExtra("movieTrailer", movie.getMovie_trailer());
         viewMovieIntent.putExtra("movieBackgroundCover", movie.getMovie_background_cover());
 
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(HomeActivity.this, moviePoster, "sharedName");
-        startActivity(viewMovieIntent, options.toBundle());
+        if(Build.VERSION.SDK_INT >= 21){
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(HomeActivity.this, moviePoster, "sharedName");
+            startActivity(viewMovieIntent, options.toBundle());
+        }else{
+            startActivity(viewMovieIntent);
+        }
 
         Toast.makeText(this, movie.getMovie_title(), Toast.LENGTH_LONG).show();
     }
@@ -96,41 +101,50 @@ public class HomeActivity extends AppCompatActivity implements MovieItemClickLis
     }
 
     private void initializeData() {
+        String[] movieTitles;
+        String[] movieDescriptions;
+//        String[] movieGenres;
+//        String[] movieCast;
+        TypedArray movieImages;
+        String[] movieTrailers;
+        TypedArray movieCovers;
 
-        // comment these variables and loops out
+
+        // comment these out
         // ------------------------------------------------------------------
-        String[] movieTitles = getResources().getStringArray(R.array.movie_titles);
-        String[] movieDescriptions = getResources().getStringArray(R.array.movie_descriptions);
-        TypedArray movieImages = getResources().obtainTypedArray(R.array.movie_posters);
-        String[] movieTrailers = getResources().getStringArray(R.array.movie_trailers);
-        TypedArray movieCovers = getResources().obtainTypedArray(R.array.movie_background_covers);
+        movieTitles = getResources().getStringArray(R.array.movie_titles);
+        movieDescriptions = getResources().getStringArray(R.array.movie_descriptions);
+//        movieGenres[]
+        movieImages = getResources().obtainTypedArray(R.array.movie_posters);
+        movieTrailers = getResources().getStringArray(R.array.movie_trailers);
+        movieCovers = getResources().obtainTypedArray(R.array.movie_background_covers);
+        //  -----------------------------------------------------------------------
+
+
+        //  -----------------------------------------------------------------------
+        // put the Json data into an array
+        // loop through the data and populate these arrays
+
+//        for (movieData:movieList) {
+//            movieTitles = movieData.;
+//            movieDescriptions = movieData.;
+//            movieGenres = movieData.;
+//            movieCast = movieData.;
+//            movieImages = movieData.;
+//            movieTrailers = movieData.;
+//            movieCovers = movieData.;
+//        }
+
+        //  -----------------------------------------------------------------------
+
 
         for (int i = 0; i<5; i++){
-            listSlides.add(new Movie(movieTitles[i], movieCovers.getResourceId(i, 0)));
+            listSlides.add(new Movie(movieTitles[i], movieDescriptions[i], getString(R.string.movie_genre), getString(R.string.cast), movieTrailers[i], movieImages.getResourceId(i, 0), movieCovers.getResourceId(i, 0)));
         }
 
         for (int i = 0; i<movieTitles.length; i++){
             listMovies.add(new Movie(movieTitles[i], movieDescriptions[i], getString(R.string.movie_genre), getString(R.string.cast), movieTrailers[i], movieImages.getResourceId(i, 0), movieCovers.getResourceId(i, 0)));
         }
-        //  -----------------------------------------------------------------------
-
-
-        // ------------------------------------------------------------------------
-        // put the API data into a new list
-        // use the loops below
-        // replace the quotes with the appropriate data from the new list
-        // ------------------------------------------------------------------------
-
-        // Loop for the slides
-        // for (int i = 0; i<5; i++){
-        //     listSlides.add(new Movie("Title from API data", "Background Cover Image from API data"));
-        // }
-
-        // Loop for the new popular movies list
-        // fix the condition the for loop
-        // for (int i = 0; i<"array_name".length; i++){
-        //      listMovies.add(new Movie("Title from API data", "Description from API data", "Genre from API data", "Cast from API data", "Trailer from API data", "Poster from API data", "Background Cover Image from API data"));
-        // }
 
     }
 

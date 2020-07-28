@@ -22,6 +22,7 @@ public class MovieDescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movie_description, container, false);
+        assert getArguments() != null;
         String description = getArguments().getString("description");
         TextView movieDescription = view.findViewById(R.id.movie_detail_description);
         movieDescription.setText(description);

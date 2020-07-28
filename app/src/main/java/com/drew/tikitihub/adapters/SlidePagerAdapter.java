@@ -34,6 +34,7 @@ public class SlidePagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
         View slideLayout = inflater.inflate(R.layout.slide_item, null);
         ImageView slideItemBackgroundCover = slideLayout.findViewById(R.id.slide_item_background_cover);
         TextView slideItemTitle = slideLayout.findViewById(R.id.slide_item_title);

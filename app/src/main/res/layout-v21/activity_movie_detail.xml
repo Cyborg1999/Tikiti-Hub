@@ -51,6 +51,7 @@
             android:layout_height="175sp"
             android:layout_marginStart="32dp"
             android:adjustViewBounds="true"
+            android:transitionName="sharedName"
             app:layout_constraintBottom_toBottomOf="@+id/movie_detail_background_cover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_detail_background_cover"

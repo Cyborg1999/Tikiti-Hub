@@ -4,11 +4,6 @@ public class Movie {
     private String movie_title, movie_description, movie_genre, movie_cast, views, ticket_cost, release_year, showing_time, running_time, language, rating, movie_trailer;
     private int movie_poster, movie_background_cover;
 
-    public Movie(String movie_title, int movie_background_cover) {
-        this.movie_title = movie_title;
-        this.movie_background_cover = movie_background_cover;
-    }
-
     public Movie(String movie_title, String movie_description, String movie_genre, String movie_cast, String movie_trailer, int movie_poster, int movie_background_cover) {
         this.movie_title = movie_title;
         this.movie_description = movie_description;

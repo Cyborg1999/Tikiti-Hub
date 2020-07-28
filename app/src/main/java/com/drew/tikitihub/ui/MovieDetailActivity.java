@@ -1,20 +1,20 @@
 package com.drew.tikitihub.ui;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -24,6 +24,8 @@ import com.drew.tikitihub.R;
 import com.drew.tikitihub.adapters.MovieDetailAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.Objects;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
@@ -43,7 +45,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     public void initViews(){
         // Get intent data
-        String movie_title = getIntent().getExtras().getString("movieTitle");
+        String movie_title = Objects.requireNonNull(getIntent().getExtras()).getString("movieTitle");
         String movie_description = getIntent().getExtras().getString("movieDescription");
         String movie_genre = getIntent().getExtras().getString("movieGenre");
         String movie_cast = getIntent().getExtras().getString("movieCast");
@@ -72,13 +74,19 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         bookMovieBtn = findViewById(R.id.book_ticket_button);
         setupBookMoviePopup(movie_title, movie_genre, movie_description, movie_poster_source);
+
+        // ------------------------------------------------------------------
+        //set up video player to play trailer
+
+
+        // ------------------------------------------------------------------
     }
 
     private void setupBookMoviePopup(String movie_title, String movie_genre, String movie_description, int movie_poster_source) {
 
         bookMoviePopup = new Dialog(this);
         bookMoviePopup.setContentView(R.layout.popup_book_movie);
-        bookMoviePopup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(bookMoviePopup.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         bookMoviePopup.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT, Toolbar.LayoutParams.WRAP_CONTENT);
         bookMoviePopup.getWindow().getAttributes().gravity = Gravity.TOP;
 
@@ -101,16 +109,33 @@ public class MovieDetailActivity extends AppCompatActivity {
         bookMovieDescription.setText(movie_description);
         Glide.with(this).load(movie_poster_source).into(bookMoviePoster);
 
+        // ------------------------------------------------------------------
         //set up spinner and date picker
+
+
+        // ------------------------------------------------------------------
 
         bookMovieCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bookMovieCheckout.setVisibility(View.INVISIBLE);
                 bookMovieProgress.setVisibility(View.VISIBLE);
+                runLipaNaMpesa();
             }
         });
     }
+
+    private void runLipaNaMpesa() {
+        // ------------------------------------------------------------------
+
+
+
+
+
+
+        // ------------------------------------------------------------------
+    }
+
 
     private void setupTabsAndViewPager(String movie_description, String movie_cast, MovieDetailViewPager viewPager, TabLayout tabLayout) {
         // pass movie description and cast info to fragment
