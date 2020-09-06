@@ -16,6 +16,14 @@
     <string name="time">Time</string>
     <string name="movie_duration">2h</string>
     <string name="mini_movie_title">No Time To Die (2020)</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="if_you_don_t_have_an_account">If you don\'t have an Account?</string>
+    <string name="sign_in">Sign In</string>
 
     <string-array name="movie_titles">
         <item>Bad Boys (2020)</item>
