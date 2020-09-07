@@ -62,9 +62,36 @@
         <item>https://www.youtube.com/watch?v=kGM4uYZzfu0</item>
         <item>https://www.youtube.com/watch?v=BIhNsAtPbPI</item>
     </string-array>
+
+    <string-array name="cinemas">
+    <item>Westgate Cinema</item>
+    <item>Century Cinemax Garden City</item>
+    <item>Anga IMAX, CBD</item>
+    <item>Century Cinemax Junction</item>
+    <item>Anga Diamond Plaza</item>
+</string-array>
+
+    <string-array name="dates">
+        <item>12/09/2020</item>
+        <item>13/09/2020</item>
+        <item>14/09/2020</item>
+        <item>15/09/2020</item>
+        <item>16/09/2020</item>
+    </string-array>
+
+    <string-array name="times">
+        <item>10:00am</item>
+        <item>12:30pm</item>
+        <item>2:00pm</item>
+        <item>4:30pm</item>
+        <item>6:00pm</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="movie_poster">Movie Poster</string>
     <string name="cinema">Cinema</string>
+    <string name="total">Total</string>
+    <string name="total_amount">Ksh. 200</string>
 
 </resources>

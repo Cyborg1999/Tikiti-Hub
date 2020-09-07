@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements MovieItemClickLis
         slidePager.setAdapter(adapter);
         //setup time
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new HomeActivity.SlideTimer(), 3000, 5000);
+        timer.scheduleAtFixedRate(new HomeActivity.SlideTimer(), 10000, 8000);
         indicator.setupWithViewPager(slidePager, true);
 
         // recycler view setup

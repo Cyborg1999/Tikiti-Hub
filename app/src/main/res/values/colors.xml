@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#121212</color>
     <color name="colorAccent">#E53935</color>
     <color name="colorBlue">#34ace0</color>
+    <color name="colorPlayerBackground">#000000</color>
 </resources>

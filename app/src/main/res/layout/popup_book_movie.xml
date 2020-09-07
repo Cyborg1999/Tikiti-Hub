@@ -92,7 +92,7 @@
             app:layout_constraintStart_toStartOf="@id/book_movie_theatre_text_view"
             app:layout_constraintEnd_toEndOf="@id/book_movie_theatre_text_view"
             android:background="@android:color/transparent"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorPrimary"
             />
 
         <TextView
@@ -118,14 +118,13 @@
             android:background="@color/colorPrimary"
             />
 
-        <EditText
+        <Spinner
             android:id="@+id/book_movie_date"
             android:layout_width="0dp"
             android:layout_height="40sp"
             app:layout_constraintTop_toBottomOf="@id/book_movie_date_text_view"
             app:layout_constraintStart_toStartOf="@id/book_movie_date_text_view"
             app:layout_constraintEnd_toEndOf="@id/book_movie_date_text_view"
-            android:inputType="date"
             android:background="@android:color/transparent"
             android:textColor="@color/colorPrimary"
             />
@@ -141,13 +140,49 @@
             app:layout_constraintStart_toStartOf="@id/book_movie_date_text_view"
             app:layout_constraintTop_toBottomOf="@id/book_movie_date_bar" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/book_movie_time_recyclerview"
+        <View
+            android:id="@+id/book_movie_time_bar"
             android:layout_width="0dp"
-            android:layout_height="75sp"
+            android:layout_height="2dp"
             app:layout_constraintTop_toBottomOf="@id/book_movie_time_text_view"
             app:layout_constraintStart_toStartOf="@id/book_movie_time_text_view"
             app:layout_constraintEnd_toEndOf="@id/book_movie_time_text_view"
+            android:layout_marginTop="45sp"
+            android:background="@color/colorPrimary"
+            />
+
+        <Spinner
+            android:id="@+id/book_movie_time"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            app:layout_constraintTop_toBottomOf="@id/book_movie_time_text_view"
+            app:layout_constraintStart_toStartOf="@id/book_movie_time_text_view"
+            app:layout_constraintEnd_toEndOf="@id/book_movie_time_text_view"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <TextView android:id="@+id/book_movie_total_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            android:text="@string/total"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@id/book_movie_time_text_view"
+            app:layout_constraintStart_toStartOf="@id/book_movie_time_text_view"
+            app:layout_constraintTop_toBottomOf="@id/book_movie_time_bar" />
+
+        <EditText
+            android:id="@+id/book_movie_total"
+            android:layout_width="0dp"
+            android:layout_height="60sp"
+            android:enabled="false"
+            android:text="@string/total_amount"
+            app:layout_constraintTop_toBottomOf="@id/book_movie_total_text_view"
+            app:layout_constraintStart_toStartOf="@id/book_movie_total_text_view"
+            app:layout_constraintEnd_toEndOf="@id/book_movie_total_text_view"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorPrimary"
             />
 
         <Button
@@ -159,9 +194,9 @@
             android:textStyle="bold"
             android:textColor="@color/colorAccent"
             android:background="@drawable/movie_ticket"
-            app:layout_constraintTop_toBottomOf="@id/book_movie_time_recyclerview"
-            app:layout_constraintStart_toStartOf="@id/book_movie_time_recyclerview"
-            app:layout_constraintEnd_toEndOf="@id/book_movie_time_recyclerview"
+            app:layout_constraintTop_toBottomOf="@id/book_movie_total"
+            app:layout_constraintStart_toStartOf="@id/book_movie_total"
+            app:layout_constraintEnd_toEndOf="@id/book_movie_total"
             android:layout_marginTop="24sp"
             />
 

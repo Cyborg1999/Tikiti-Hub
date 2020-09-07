@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -12,10 +13,14 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
@@ -45,10 +50,11 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     public void initViews(){
         // Get intent data
-        String movie_title = Objects.requireNonNull(getIntent().getExtras()).getString("movieTitle");
+        final String movie_title = Objects.requireNonNull(getIntent().getExtras()).getString("movieTitle");
         String movie_description = getIntent().getExtras().getString("movieDescription");
         String movie_genre = getIntent().getExtras().getString("movieGenre");
         String movie_cast = getIntent().getExtras().getString("movieCast");
+        final String movie_trailer = Objects.requireNonNull(getIntent().getExtras()).getString("movieTrailer");
         int movie_poster_source = getIntent().getExtras().getInt("moviePoster");
         int movie_background_cover_source = getIntent().getExtras().getInt("movieBackgroundCover");
 
@@ -58,6 +64,16 @@ public class MovieDetailActivity extends AppCompatActivity {
         TextView movieTitle = findViewById(R.id.movie_detail_title);
         TextView movieGenre = findViewById(R.id.movie_detail_genres);
         FloatingActionButton play_fab = findViewById(R.id.play_trailer);
+
+
+        play_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewMovieTrailerIntent = new Intent(getApplicationContext(), MovieTrailerActivity.class);
+                viewMovieTrailerIntent.putExtra("movieTrailer", movie_trailer);
+                startActivity(viewMovieTrailerIntent);
+            }
+        });
 
         setupAnimation(movieCoverImage, play_fab);
 
@@ -75,11 +91,6 @@ public class MovieDetailActivity extends AppCompatActivity {
         bookMovieBtn = findViewById(R.id.book_ticket_button);
         setupBookMoviePopup(movie_title, movie_genre, movie_description, movie_poster_source);
 
-        // ------------------------------------------------------------------
-        //set up video player to play trailer
-
-
-        // ------------------------------------------------------------------
     }
 
     private void setupBookMoviePopup(String movie_title, String movie_genre, String movie_description, int movie_poster_source) {
@@ -103,6 +114,23 @@ public class MovieDetailActivity extends AppCompatActivity {
         bookMoviePoster = bookMoviePopup.findViewById(R.id.book_movie_poster);
         bookMovieCheckout = bookMoviePopup.findViewById(R.id.book_movie_checkout);
         bookMovieProgress = bookMoviePopup.findViewById(R.id.book_movie_checkout_progress);
+
+        Spinner bookMovieCinema = bookMoviePopup.findViewById(R.id.book_movie_theatre);
+        Spinner bookMovieDate = bookMoviePopup.findViewById(R.id.book_movie_date);
+        Spinner bookMovieTime = bookMoviePopup.findViewById(R.id.book_movie_time);
+        TextView bookMovieTotal = bookMoviePopup.findViewById(R.id.book_movie_total);
+
+        ArrayAdapter<CharSequence> cinemas = ArrayAdapter.createFromResource(getApplicationContext(), R.array.cinemas, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> dates = ArrayAdapter.createFromResource(getApplicationContext(), R.array.dates, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> times = ArrayAdapter.createFromResource(getApplicationContext(), R.array.times, android.R.layout.simple_spinner_item);
+
+        cinemas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dates.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        times.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        bookMovieCinema.setAdapter(cinemas);
+        bookMovieDate.setAdapter(dates);
+        bookMovieTime.setAdapter(times);
 
         bookMovieTitle.setText(movie_title);
         bookMovieGenres.setText(movie_genre);
@@ -166,4 +194,5 @@ public class MovieDetailActivity extends AppCompatActivity {
         movieCoverImage.setAnimation(AnimationUtils.loadAnimation(this, R.anim.scale_animation));
         play_fab.setAnimation(AnimationUtils.loadAnimation(this, R.anim.scale_animation));
     }
+
 }
