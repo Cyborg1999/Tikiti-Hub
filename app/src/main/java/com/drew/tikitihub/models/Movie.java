@@ -1,10 +1,9 @@
 package com.drew.tikitihub.models;
 
 public class Movie {
-    private String movie_title, movie_description, movie_genre, movie_cast, views, ticket_cost, release_year, showing_time, running_time, language, rating, movie_trailer;
-    private int movie_poster, movie_background_cover;
+    private String movie_title, movie_description, movie_genre, movie_cast, movie_trailer, movie_poster, movie_background_cover;
 
-    public Movie(String movie_title, String movie_description, String movie_genre, String movie_cast, String movie_trailer, int movie_poster, int movie_background_cover) {
+    public Movie(String movie_title, String movie_description, String movie_genre, String movie_cast, String movie_trailer, String movie_poster, String movie_background_cover) {
         this.movie_title = movie_title;
         this.movie_description = movie_description;
         this.movie_genre = movie_genre;
@@ -28,7 +27,7 @@ public class Movie {
         return movie_cast;
     }
 
-    public int getMovie_poster() {
+    public String getMovie_poster() {
         return movie_poster;
     }
 
@@ -36,7 +35,7 @@ public class Movie {
         return movie_trailer;
     }
 
-    public int getMovie_background_cover() {
+    public String getMovie_background_cover() {
         return movie_background_cover;
     }
 

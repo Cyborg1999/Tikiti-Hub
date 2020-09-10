@@ -64,12 +64,12 @@
     </string-array>
 
     <string-array name="cinemas">
-    <item>Westgate Cinema</item>
-    <item>Century Cinemax Garden City</item>
-    <item>Anga IMAX, CBD</item>
-    <item>Century Cinemax Junction</item>
-    <item>Anga Diamond Plaza</item>
-</string-array>
+        <item>Westgate Cinema</item>
+        <item>Century Cinemax Garden City</item>
+        <item>Anga IMAX, CBD</item>
+        <item>Century Cinemax Junction</item>
+        <item>Anga Diamond Plaza</item>
+    </string-array>
 
     <string-array name="dates">
         <item>12/09/2020</item>
@@ -93,5 +93,6 @@
     <string name="cinema">Cinema</string>
     <string name="total">Total</string>
     <string name="total_amount">Ksh. 200</string>
+    <string name="my_account">My Account</string>
 
 </resources>

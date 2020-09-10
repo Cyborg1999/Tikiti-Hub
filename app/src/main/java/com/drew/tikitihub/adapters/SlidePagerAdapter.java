@@ -45,7 +45,6 @@ public class SlidePagerAdapter extends PagerAdapter {
         TextView slideItemTitle = slideLayout.findViewById(R.id.slide_item_title);
         FloatingActionButton slideItemPlayBtn = slideLayout.findViewById(R.id.slide_play_button);
 
-        slideItemBackgroundCover.setImageResource(mList.get(position).getMovie_background_cover());
         slideItemTitle.setText(mList.get(position).getMovie_title());
 
         slideLayout.setOnClickListener(new View.OnClickListener() {
