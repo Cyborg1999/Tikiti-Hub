@@ -44,7 +44,6 @@
             android:layout_margin="15dp"
             android:layout_below="@id/profName"
             android:text="Email"
-            android:enabled="false"
             android:textSize="25sp"
             android:textColor="@android:color/white"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
@@ -54,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_profEmail"
+            android:enabled="false"
             android:layout_margin="10dp"/>
 
         <LinearLayout
