@@ -23,6 +23,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.drew.tikitihub.extra.Constant;
@@ -48,16 +50,7 @@ public class HomeActivity extends AppCompatActivity implements MovieItemClickLis
 
     private ArrayList<Movie> listMovies, listSlides;
     private ViewPager slidePager;
-    private SharedPreferences sharedPreferences;
-    private JSONArray movies;
-
-    private ArrayList<String> movieTitles;
-    private ArrayList<String> movieDescriptions;
-    //        String[] movieGenres;
-//        String[] movieCast;
-    private ArrayList<String> movieImages;
-    private ArrayList<String> movieTrailers;
-    private ArrayList<String> movieCovers;
+    private RecyclerView nowShowingRecyclerView, comingSoonRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +65,6 @@ public class HomeActivity extends AppCompatActivity implements MovieItemClickLis
             }
         });
 
-
         slidePager = findViewById(R.id.slider_pager);
         TabLayout indicator = findViewById(R.id.slide_indicator);
 
@@ -80,21 +72,18 @@ public class HomeActivity extends AppCompatActivity implements MovieItemClickLis
         listMovies = new ArrayList<>();
 
         initializeData();
-//        SlidePagerAdapter adapter = new SlidePagerAdapter(this, listSlides);
-//        slidePager.setAdapter(adapter);
-        //setup time
-//        Timer timer = new Timer();
-//        timer.scheduleAtFixedRate(new HomeActivity.SlideTimer(), 10000, 8000);
-//        indicator.setupWithViewPager(slidePager, true);
+
+        // setup time
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new HomeActivity.SlideTimer(), 10000, 8000);
+        indicator.setupWithViewPager(slidePager, true);
 
         // recycler view setup
-        RecyclerView nowShowingRecyclerView = findViewById(R.id.now_showing_recycler_view);
-        RecyclerView comingSoonRecyclerView = findViewById(R.id.coming_soon_recycler_view);
-        MovieAdapter movieAdapter = new MovieAdapter(this, listMovies);
-        nowShowingRecyclerView.setAdapter(movieAdapter);
+        nowShowingRecyclerView = findViewById(R.id.now_showing_recycler_view);
+        comingSoonRecyclerView = findViewById(R.id.coming_soon_recycler_view);
+
         nowShowingRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         nowShowingRecyclerView.setHasFixedSize(true);
-        comingSoonRecyclerView.setAdapter(movieAdapter);
         comingSoonRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         comingSoonRecyclerView.setHasFixedSize(true);
     }
@@ -111,26 +100,26 @@ public class HomeActivity extends AppCompatActivity implements MovieItemClickLis
         viewMovieIntent.putExtra("movieTrailer", movie.getMovie_trailer());
         viewMovieIntent.putExtra("movieBackgroundCover", movie.getMovie_background_cover());
 
-        if(Build.VERSION.SDK_INT >= 21){
+        if (Build.VERSION.SDK_INT >= 21) {
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(HomeActivity.this, moviePoster, "sharedName");
             startActivity(viewMovieIntent, options.toBundle());
-        }else{
+        } else {
             startActivity(viewMovieIntent);
         }
 
         Toast.makeText(this, movie.getMovie_title(), Toast.LENGTH_LONG).show();
     }
 
-    class SlideTimer extends TimerTask{
+    class SlideTimer extends TimerTask {
 
         @Override
         public void run() {
             HomeActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if(slidePager.getCurrentItem()<listSlides.size()-1){
-                      slidePager.setCurrentItem(slidePager.getCurrentItem()+1);
-                    }else {
+                    if (slidePager.getCurrentItem() < listSlides.size() - 1) {
+                        slidePager.setCurrentItem(slidePager.getCurrentItem() + 1);
+                    } else {
                         slidePager.setCurrentItem(0);
                     }
                 }
@@ -139,49 +128,48 @@ public class HomeActivity extends AppCompatActivity implements MovieItemClickLis
     }
 
     private void initializeData() {
-        sharedPreferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
-        StringRequest request = new StringRequest(Request.Method.GET, Constant.MOVIES,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject object = new JSONObject(response);
-                            if(object.getBoolean("success")){
-                                movies = new JSONArray(object.getString("movies"));
-                                for(int i =0; i<movies.length(); i++){
-                                    JSONObject movieObject = movies.getJSONObject(i);
-                                    Movie movie = new Movie(movieObject.getString("title"), movieObject.getString("description"), "", "", movieObject.getString("trailer"), movieObject.getString("poster"), movieObject.getString("cover_image")) {
-                                    };
-                                    listMovies.add(movie);
-                                    Log.e("Response", "movies:" +movie);
-                                }
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+        StringRequest request = new StringRequest(Request.Method.GET, Constant.MOVIES, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    JSONArray array = object.getJSONArray("movies");
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject movieObject = array.getJSONObject(i);
+                        Movie movie = new Movie();
+                        movie.setMovie_title(movieObject.getString("title"));
+                        movie.setMovie_description(movieObject.getString("description"));
+                        movie.setMovie_trailer(movieObject.getString("trailer"));
+                        movie.setMovie_poster(movieObject.getString("poster"));
+                        movie.setMovie_background_cover(movieObject.getString("cover_image"));
+                        listMovies.add(movie);
+
+                        if(i<5){
+                            listSlides.add(movie);
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Response", error.toString());
-                    }
-                }) {
 
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                String token = sharedPreferences.getString("token", "");
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("Content-Type", "application/x-www-form-urlencoded");
-                params.put("Authorization", "Bearer "+token);
-                return params;
+                    MovieAdapter movieAdapter = new MovieAdapter(HomeActivity.this, listMovies, HomeActivity.this);
+                    nowShowingRecyclerView.setAdapter(movieAdapter);
+                    comingSoonRecyclerView.setAdapter(movieAdapter);
+
+                    SlidePagerAdapter adapter = new SlidePagerAdapter(HomeActivity.this, listSlides);
+                    slidePager.setAdapter(adapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.e("Tag", response);
             }
-        };
-
-//        for (int i = 0; i<5; i++){
-//            listSlides.add(new Movie(movieTitles.get(i), movieDescriptions.get(i), "", "", movieTrailers.get(i), movieImages.get(i), movieCovers.get(i)));
-//        }
-
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HomeActivity.this, "Error: " + error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
     }
 
 }

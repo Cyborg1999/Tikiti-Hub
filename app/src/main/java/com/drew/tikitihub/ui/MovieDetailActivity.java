@@ -24,6 +24,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.drew.tikitihub.extra.Constant;
 import com.drew.tikitihub.extra.MovieDetailViewPager;
 import com.drew.tikitihub.R;
 import com.drew.tikitihub.adapters.MovieDetailAdapter;
@@ -55,8 +56,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         String movie_genre = getIntent().getExtras().getString("movieGenre");
         String movie_cast = getIntent().getExtras().getString("movieCast");
         final String movie_trailer = Objects.requireNonNull(getIntent().getExtras()).getString("movieTrailer");
-        int movie_poster_source = getIntent().getExtras().getInt("moviePoster");
-        int movie_background_cover_source = getIntent().getExtras().getInt("movieBackgroundCover");
+        String movie_poster_source = getIntent().getExtras().getString("moviePoster");
+        String movie_background_cover_source = getIntent().getExtras().getString("movieBackgroundCover");
 
         // initialize variables
         ImageView moviePoster = findViewById(R.id.movie_detail_poster);
@@ -78,8 +79,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         setupAnimation(movieCoverImage, play_fab);
 
         //set values
-        Glide.with(this).load(movie_background_cover_source).into(movieCoverImage);
-        Glide.with(this).load(movie_poster_source).into(moviePoster);
+        Glide.with(this).load(Constant.URL+"storage/posters/"+movie_poster_source).into(moviePoster);
+        Glide.with(this).load(Constant.URL+"storage/cover_images/"+movie_background_cover_source).into(movieCoverImage);
         movieTitle.setText(movie_title);
         movieGenre.setText(movie_genre);
 
@@ -93,7 +94,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     }
 
-    private void setupBookMoviePopup(String movie_title, String movie_genre, String movie_description, int movie_poster_source) {
+    private void setupBookMoviePopup(String movie_title, String movie_genre, String movie_description, String movie_poster_source) {
 
         bookMoviePopup = new Dialog(this);
         bookMoviePopup.setContentView(R.layout.popup_book_movie);
@@ -135,13 +136,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         bookMovieTitle.setText(movie_title);
         bookMovieGenres.setText(movie_genre);
         bookMovieDescription.setText(movie_description);
-        Glide.with(this).load(movie_poster_source).into(bookMoviePoster);
-
-        // ------------------------------------------------------------------
-        //set up spinner and date picker
-
-
-        // ------------------------------------------------------------------
+        Glide.with(this).load(Constant.URL+"storage/posters/"+movie_poster_source).into(bookMoviePoster);
 
         bookMovieCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
