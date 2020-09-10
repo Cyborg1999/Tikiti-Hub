@@ -12,7 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.drew.tikitihub.R;
+import com.drew.tikitihub.extra.Constant;
 import com.drew.tikitihub.models.Movie;
 import com.drew.tikitihub.ui.MovieDetailActivity;
 import com.drew.tikitihub.ui.MovieTrailerActivity;
@@ -46,6 +48,7 @@ public class SlidePagerAdapter extends PagerAdapter {
         FloatingActionButton slideItemPlayBtn = slideLayout.findViewById(R.id.slide_play_button);
 
         slideItemTitle.setText(mList.get(position).getMovie_title());
+        Glide.with(mContext).load(Constant.URL+"storage/cover_images/"+mList.get(position).getMovie_background_cover()).into(slideItemBackgroundCover);
 
         slideLayout.setOnClickListener(new View.OnClickListener() {
             @Override
