@@ -149,14 +149,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     private void runLipaNaMpesa() {
-        // ------------------------------------------------------------------
-
-
-
-
-
-
-        // ------------------------------------------------------------------
+        startActivity(new Intent(MovieDetailActivity.this, HomeActivity.class));
     }
 
 

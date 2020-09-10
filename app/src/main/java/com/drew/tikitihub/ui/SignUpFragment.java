@@ -117,7 +117,6 @@ public class SignUpFragment extends Fragment {
 
                                 startActivity(new Intent((AuthActivity)getContext(), HomeActivity.class));
                                 ((AuthActivity)getContext()).finish();
-
                                 Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
