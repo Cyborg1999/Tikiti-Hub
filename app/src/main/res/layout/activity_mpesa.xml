@@ -6,4 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.MpesaActivity">
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_lipa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lipa_na_mpesa_online"
+                android:layout_marginTop="300dp"/>
+
+
+        </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
