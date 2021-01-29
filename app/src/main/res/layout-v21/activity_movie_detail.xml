@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.MovieDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="25sp">
+
+        <ImageView
+            android:id="@+id/movie_detail_background_cover"
+            android:layout_width="match_parent"
+            android:layout_height="250sp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bad_boys_cover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/movie_cover_gradient"
+            android:layout_width="0dp"
+            android:layout_height="100sp"
+            android:src="@drawable/gradient_bg"
+            app:layout_constraintBottom_toBottomOf="@+id/movie_detail_background_cover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/play_trailer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/play_button"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@id/movie_detail_background_cover"
+            app:layout_constraintEnd_toEndOf="@id/movie_detail_background_cover"
+            app:layout_constraintStart_toStartOf="@id/movie_detail_background_cover"
+            app:layout_constraintTop_toTopOf="@id/movie_detail_background_cover" />
+
+        <ImageView
+            android:id="@+id/movie_detail_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="175sp"
+            android:layout_marginStart="32dp"
+            android:adjustViewBounds="true"
+            android:transitionName="sharedName"
+            app:layout_constraintBottom_toBottomOf="@+id/movie_detail_background_cover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movie_detail_background_cover"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/bad_boys_poster" />
+
+        <TextView
+            android:id="@+id/movie_detail_title"
+            android:layout_width="0dp"
+            android:layout_height="30sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/movie_title"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/movie_detail_poster"
+            app:layout_constraintTop_toBottomOf="@+id/movie_detail_background_cover" />
+
+        <TextView
+            android:id="@+id/movie_detail_genres"
+            android:layout_width="0dp"
+            android:layout_height="25sp"
+            android:text="@string/movie_genre"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@id/movie_detail_title"
+            app:layout_constraintStart_toStartOf="@+id/movie_detail_title"
+            app:layout_constraintTop_toBottomOf="@+id/movie_detail_title" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/movie_detail_tabs"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            app:tabGravity="fill"
+            app:tabMode="scrollable"
+            app:layout_constraintStart_toStartOf="@+id/movie_detail_title"
+            app:layout_constraintTop_toBottomOf="@+id/movie_detail_genres"
+            app:tabIndicatorHeight="30sp"
+            app:tabIndicatorColor="@color/colorBlue"
+            app:tabSelectedTextColor="#ffffff">
+        </com.google.android.material.tabs.TabLayout>
+
+        <com.drew.tikitihub.extra.MovieDetailViewPager
+            android:id="@+id/movie_details_pager"
+            android:layout_width="0dp"
+            android:layout_height="200sp"
+            android:layout_marginStart="24sp"
+            android:layout_marginTop="24sp"
+            android:layout_marginEnd="24sp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_poster" >
+        </com.drew.tikitihub.extra.MovieDetailViewPager>
+
+        <ImageView
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:src="@drawable/ticket"
+            android:layout_marginStart="25sp"
+            app:layout_constraintStart_toStartOf="@id/book_ticket_button"
+            app:layout_constraintTop_toTopOf="@id/book_ticket_button"
+            app:layout_constraintBottom_toBottomOf="@id/book_ticket_button"
+            />
+
+        <Button
+            android:id="@+id/book_ticket_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            android:paddingStart="48sp"
+            android:paddingEnd="24sp"
+            android:text="@string/book_ticket"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="24sp"
+            android:background="@drawable/movie_ticket"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_details_pager"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

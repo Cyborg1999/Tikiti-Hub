@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AccountFragment"
+    android:gravity="center"
+    android:layout_margin="15dp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/prof_relLay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center">
+
+
+
+        <TextView
+            android:id="@+id/txt_profName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name :"
+            android:textSize="25sp"
+            android:layout_margin="15dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+
+        <EditText
+            android:id="@+id/profName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_profName"
+            android:hint="Name"
+            android:enabled="false"
+            android:inputType="text"
+            android:textColor="@android:color/white"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/txt_profEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_below="@id/profName"
+            android:text="Email"
+            android:textSize="25sp"
+            android:textColor="@android:color/white"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
+
+        <EditText
+            android:id="@+id/profEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_profEmail"
+            android:enabled="false"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profEmail"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/prof_tickets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tickets"
+                android:layout_margin="25dp"
+                android:background="@color/colorAccent"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>
